@@ -1,0 +1,37 @@
+#!/bin/bash
+sudo dnf update -y
+wget https://dev.mysql.com/get/mysql80-community-release-el9-4.noarch.rpm
+sudo dnf install mysql80-community-release-el9-4.noarch.rpm -y
+sudo rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2023
+sudo dnf install mysql-community-server -y
+sudo systemctl start mysqld
+sudo systemctl enable mysqld
+sudo mysql_secure_installation
+#====================================================================================
+
+#🔍 Step 1: Get the temporary root password
+#MySQL generates a random temporary password for root after installation. You can find it by checking the MySQL log:
+
+#sudo grep 'temporary password' /var/log/mysqld.log
+#You should see output like:
+
+#[Note] A temporary password is generated for root@localhost: AbcdEfghIjk1!
+#Copy that password (AbcdEfghIjk1! in this example).
+
+#🔐 Step 2: Run the secure installation script again
+#Now use the copied temporary password when prompted:
+
+#sudo mysql_secure_installation
+#You'll be prompted to:
+
+#Change the root password
+
+#Remove anonymous users
+
+#Disallow remote root login
+
+#Remove test database
+
+#Reload privileges
+
+#Respond according to your needs (recommended: Y for all except remote root login).
