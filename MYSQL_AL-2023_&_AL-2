@@ -1,0 +1,25 @@
+MYSQL installation on Amazon Linux-2
+
+#!/bin/bash
+sudo yum update -y
+#In AL-2 we have to use yum in AL-2023 we can use dnf 
+# EL7 for AL-2
+wget https://dev.mysql.com/get/mysql80-community-release-el7-5.noarch.rpm
+sudo yum install -y mysql80-community-release-el7-5.noarch.rpm
+sudo rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2023
+sudo yum install -y mysql-community-server
+sudo systemctl start mysqld
+sudo systemctl enable mysqld
+
+===============MYSQL installation on Amazon Linux-2023==========================
+
+#!/bin/bash
+sudo dnf update -y
+wget https://dev.mysql.com/get/mysql80-community-release-el9-4.noarch.rpm
+# EL9 for AL-2023
+sudo dnf install mysql80-community-release-el9-4.noarch.rpm -y
+sudo rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2023
+sudo dnf install mysql-community-server -y
+sudo systemctl start mysqld
+sudo systemctl enable mysqld
+
