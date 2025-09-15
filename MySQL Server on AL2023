@@ -35,3 +35,31 @@ sudo mysql_secure_installation
 #Reload privileges
 
 #Respond according to your needs (recommended: Y for all except remote root login).
+
+
+
+=========================================MYSQL installation in AL2023=======================================================================
+Download mysql. (If you don’t have the wget tool then get it using – sudo dnf install wget)
+1.sudo wget https://dev.mysql.com/get/mysql80-community-release-el9-3.noarch.rpm
+Once downloaded, run - 
+2. sudo dnf install mysql80-community-release-el9-3.noarch.rpm
+Now, pack it with dnf by running - 
+3. sudo dnf update
+Finally, you can now install mysql by running - 
+4. sudo dnf install mysql-community-server
+5. sudo systemctl start mysqld
+6. sudo systemctl enable mysqld
+7. sudo systemctl status mysqld
+=====================================================Installation steps Completed ===================================================================
+>> Secure MYSQL now - 
+1. sudo grep 'temporary password' /var/log/mysqld.log //setup temp pass
+2. sudo mysql_secure_installation -p //enter temp pass and reset. harden other security here.
+3. mysql -u root -p //login to mysql with the newly set up pass. 
+
+
+>> If you can't connect to db with PHP, your mysqli driver is probably missing.
+To install mysqli/pdo, use the following command - 
+
+1. yum -y install php-mysqlnd
+
+Alright, Now we have completed installations of NGINX, PHP & MYSQL
