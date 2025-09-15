@@ -53,6 +53,8 @@ Finally, you can now install mysql by running -
 =====================================================Installation steps Completed ===================================================================
 >> Secure MYSQL now - 
 1. sudo grep 'temporary password' /var/log/mysqld.log //setup temp pass
+    If you want to change password 
+    $ ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';
 2. sudo mysql_secure_installation -p //enter temp pass and reset. harden other security here.
 3. mysql -u root -p //login to mysql with the newly set up pass. 
 
