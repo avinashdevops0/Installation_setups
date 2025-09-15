@@ -1,0 +1,7 @@
+=============================== PHP installation steps =================================
+sudo dnf update -y
+sudo dnf install -y php php-cli php-fpm php-mysqlnd php-json php-opcache php-xml php-mbstring
+php -v
+sudo systemctl enable php-fpm
+sudo systemctl start php-fpm
+sudo systemctl status php-fpm
